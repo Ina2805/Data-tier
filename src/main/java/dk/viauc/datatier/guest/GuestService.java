@@ -28,4 +28,8 @@ public class GuestService {
     public List<Guest> getGuests() {
         return guestRepository.findAll();
     }
+
+    public boolean isGuestPresent(Long id) {
+        return guestRepository.existsById(id);
+    }
 }

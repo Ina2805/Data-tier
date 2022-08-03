@@ -30,9 +30,17 @@ public class PetService {
         petRepository.save(pet);
     }
 
+    public Optional<Pet> getPet(Long petId) {
+        return petRepository.findById(petId);
+    }
+
     public List<Pet> getPets(Long guestId) {
         Optional<List<Pet>> guestPetsOptional = petRepository.findPetsByGuestOwner_Id(guestId);
 
         return guestPetsOptional.get();
+    }
+
+    public boolean isPetPresent(Long id) {
+        return petRepository.existsById(id);
     }
 }

@@ -28,4 +28,8 @@ public class HostService {
     public List<Host> getHosts() {
         return hostRepository.findAll();
     }
+
+    public boolean isHostPresent(Long id) {
+        return hostRepository.existsById(id);
+    }
 }

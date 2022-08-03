@@ -5,6 +5,7 @@ import dk.viauc.datatier.host.HostRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.swing.text.html.Option;
 import java.util.List;
 import java.util.Optional;
 
@@ -30,9 +31,17 @@ public class PlaceService {
         placeRepository.save(place);
     }
 
+    public Optional<Place> getPlace(Long placeId) {
+        return placeRepository.findById(placeId);
+    }
+
     public List<Place> getPlaces(Long hostId) {
         Optional<List<Place>> hostPlacesOptional = placeRepository.findPlacesByHostOwner_Id(hostId);
 
         return hostPlacesOptional.get();
+    }
+
+    public boolean isPlacePresent(Long id) {
+        return placeRepository.existsById(id);
     }
 }
